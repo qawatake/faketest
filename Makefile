@@ -2,6 +2,7 @@ golangci-lint := go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.5
 gofmtmd := go run github.com/po3rin/gofmtmd/cmd/gofmtmd@latest
 
 lint:
+	go vet ./...
 	$(golangci-lint) run
 
 test:
