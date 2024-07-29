@@ -18,7 +18,9 @@ jobs:
           cache: false
       - uses: qawatake/depcache@main
         with:
-          dependency-path: go.mod
+          dependency-path: |
+            go.mod
+            Makefile
           path: ~/go/pkg/mod
           skip-save: ${{ github.ref != 'refs/heads/main' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
