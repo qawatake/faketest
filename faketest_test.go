@@ -63,7 +63,7 @@ func TestAssertEachFieldIsRandom(t *testing.T) {
 					ID:         42,
 					Name:       sample("book1", "book2"),
 					Tags:       shuffle([]string{"tag1", "tag2"}),
-					unexported: sample("uneported1", "unexported2"),
+					unexported: sample("unexported1", "unexported2"),
 				}
 			},
 			ignoreFields: []string{"ID"},
