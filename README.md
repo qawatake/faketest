@@ -4,7 +4,19 @@
 [![test](https://github.com/qawatake/faketest/actions/workflows/test.yaml/badge.svg)](https://github.com/qawatake/faketest/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/qawatake/faketest/graph/badge.svg)](https://codecov.io/gh/qawatake/faketest)
 
+Fakes should be random.
+
 ```go
+func TestGood(t *testing.T) {
+	t.Parallel()
+	faketest.AssertEachFieldIsRandom(t, Good) // OK
+}
+
+func TestBad(t *testing.T) {
+	t.Parallel()
+	faketest.AssertEachFieldIsRandom(t, Bad) // "Book.Name is not random"
+}
+
 type Book struct {
 	ID   int64
 	Name string
@@ -13,7 +25,7 @@ type Book struct {
 func Good() *Book {
 	return &Book{
 		ID:   rand.Int64(),
-		Name: []string{"Macbeth", "Hamlet", "Othello"}[rand.Intn(3)],
+		Name: []string{"Macbeth", "Hamlet", "Othello"}[rand.IntN(3)],
 	}
 }
 
