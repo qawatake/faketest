@@ -77,7 +77,7 @@ func TestAssertEachFieldIsRandom(t *testing.T) {
 			reporter := &testReporter{}
 			faketest.AssertEachFieldIsRandom(reporter, tt.fakeFuctory, tt.ignoreFields...)
 			if diff := cmp.Diff(tt.errors, reporter.ErrorfCalls()); diff != "" {
-				t.Errorf(diff)
+				t.Error(diff)
 			}
 		})
 	}
